@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.poepart1;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -115,45 +113,44 @@ public class Login {
 
         return false;
     }
-    public static String registerUser(String username, String password, String number){
-        StringBuilder output = new StringBuilder();
-        
-        if (checkusername(username)){
-            System.out.println("\nUsername sucsessfully captured");          
-        }
-        if (!checkusername(username)) {
-            System.out.println("\nUsername is not correctly formatted, please ensure that your username contains an underscore and is no mure than five characters in length");
-        }
-        
-        if (checkPasswordComplexity(password)){
-            System.out.println("Password is succesfully captured");
-        }
-        if (!checkPasswordComplexity(password)) {
-            System.out.println("Password is not corectly formatted, please ensure that the password contaians eight charecters,a capital letter, a number and at lease one special character");
-        }
-        if (checkCellPhoneNumber(number)){
-            System.out.println("Cell phone number correctly added");
-        }
-        if (!checkCellPhoneNumber(number)){
-            System.out.println("Cell phone number incorrectly formatted or does not contain international code");
-        }
-        if (checkusername(username) && (checkPasswordComplexity(password))){
-            System.out.println("You are now registered\n"); 
-        }
-        return output.toString();               
+    public static String registerUser(String username, String password, String number) {
+    StringBuilder output = new StringBuilder();
+
+    if (checkusername(username)) {
+        JOptionPane.showMessageDialog(null, "Username successfully captured");
+    } else {
+        JOptionPane.showMessageDialog(null,
+                "Username is not correctly formatted. Please ensure that your username contains an underscore and is no more than five characters in length.");
     }
+
+    if (checkPasswordComplexity(password)) {
+        JOptionPane.showMessageDialog(null, "Password successfully captured");
+    } else {
+        JOptionPane.showMessageDialog(null,
+                "Password is not correctly formatted. It must be at least 8 characters long, contain a capital letter, a number, and a special character.");
+    }
+
+    if (checkCellPhoneNumber(number)) {
+        JOptionPane.showMessageDialog(null, "Cell phone number correctly added");
+    } else {
+        JOptionPane.showMessageDialog(null,
+                "Cell phone number incorrectly formatted or does not contain international code.");
+    }
+
+    if (checkusername(username) && checkPasswordComplexity(password)) {
+        JOptionPane.showMessageDialog(null, "You are now registered.");
+    }
+
+    return output.toString();
+}
     public static boolean loginUser(String enteredUsername, String enteredPassword,String username, String password){
     return username.equals(enteredUsername) && password.equals(enteredPassword);
     }
-    public String returnLoginStatus(String enteredUsername,String enteredPassword,String firstName,String lastName){
-       StringBuilder output = new StringBuilder();
-        if (loginUser(enteredUsername, enteredPassword, username, password)){
-            System.out.println("Login successful");
-            System.out.println("Welcome " + firstName + ", " + lastName + " it is great to see you again");
-        }
-        else {
-            System.out.println("Failed login");
-        }
-        return output.toString();
+    public String returnLoginStatus(String enteredUsername, String enteredPassword, String firstName, String lastName) {
+    if (loginUser(enteredUsername, enteredPassword, username, password)) {
+        return "Welcome " + firstName + " " + lastName + ", it is great to see you.";
+    } else {
+        return "Login failed";
     }
+}
     }
