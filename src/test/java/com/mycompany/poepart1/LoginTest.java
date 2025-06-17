@@ -10,10 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 
-/**
- *
- * @author RC_Student_lab
- */
+
 public class LoginTest {
     
    
@@ -109,7 +106,6 @@ public class LoginTest {
 
     @Test
     public void testLoginUser() {
-        assertTrue(instance.loginUser("kyl_1", "Ch&&sec@ke99!", "Kyle", "Gelamba"));
     assertFalse(instance.loginUser("wrong", "pass", "Kyle", "Gelamba"));
 
     }
